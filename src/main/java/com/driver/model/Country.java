@@ -3,40 +3,30 @@ package com.driver.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "country")
 public class Country {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    //    @Enumerated(EnumType.STRING)
     private CountryName countryName;
 
     private String code;
 
-    @JoinColumn
     @ManyToOne
     private ServiceProvider serviceProvider;
 
-    @JoinColumn
     @OneToOne
     private User user;
-
-    public Country(CountryName countryName, String code) {
-        this.countryName = countryName;
-        this.code = code;
-    }
 
     public Country() {
     }
 
-    public CountryName getCountryName() {
-        return countryName;
-    }
-
-    public void setCountryName(CountryName countryName) {
+    public Country(int id, CountryName countryName, String code, ServiceProvider serviceProvider, User user) {
+        this.id = id;
         this.countryName = countryName;
+        this.code = code;
+        this.serviceProvider = serviceProvider;
+        this.user = user;
     }
 
     public int getId() {
@@ -45,6 +35,14 @@ public class Country {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public CountryName getCountryName() {
+        return countryName;
+    }
+
+    public void setCountryName(CountryName countryName) {
+        this.countryName = countryName;
     }
 
     public String getCode() {
