@@ -24,7 +24,7 @@ public class User {
     private List<ServiceProvider> serviceProviderList = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
-    private List<Connection> connectionList = new ArrayList<>();
+    private List<Connection> connectionList;
 
     @OneToOne(mappedBy = "user")
     private Country originalCountry;
