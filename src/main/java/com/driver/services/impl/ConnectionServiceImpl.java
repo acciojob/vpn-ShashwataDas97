@@ -24,7 +24,7 @@ public class ConnectionServiceImpl implements ConnectionService {
         User user = userRepository2.findById(userId).orElse(null);
         if(user.getMaskedIp() != null){
             throw new Exception("Already connected");
-        }else if(countryName.equalsIgnoreCase(user.getCountry().getCountryName().toString())){
+        }else if(countryName.equalsIgnoreCase(user.getOriginalCountry().getCountryName().toString())){
             return user;
         }else {
             if(user.getServiceProviderList() == null){
@@ -83,7 +83,7 @@ public class ConnectionServiceImpl implements ConnectionService {
         if (receiver.getMaskedIp() != null){
             String Ip = receiver.getMaskedIp();
             String code = Ip.substring(0, 3);
-            if (code.equals(sender.getCountry().getCode())){
+            if (code.equals(sender.getOriginalCountry().getCode())){
                 return sender;
             }else{
                 String countryName = "";
@@ -110,10 +110,10 @@ public class ConnectionServiceImpl implements ConnectionService {
                 }
             }
         }else{
-            if (receiver.getCountry().equals(sender.getCountry())) {
+            if (receiver.getOriginalCountry().equals(sender.getOriginalCountry())) {
                 return sender;
             } else {
-                String countryName = receiver.getCountry().getCountryName().toString();
+                String countryName = receiver.getOriginalCountry().getCountryName().toString();
                 try {
                     User updatedSender = connect(senderId, countryName);
                     return updatedSender;

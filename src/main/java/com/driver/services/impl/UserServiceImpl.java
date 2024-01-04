@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
                 country.setCode(CountryName.JPN.toCode());
             }
             country.setUser(user);
-            user.setCountry(country);
+            user.setOriginalCountry(country);
             user.setConnected(false);
             userRepository3.save(user);
             String originalIp = country.getCode() + "." + user.getId();
