@@ -18,29 +18,23 @@ public class User {
 
     private String maskedIp;
 
-    private boolean connected;
+    private Boolean connected;
 
     @ManyToMany
-    private List<ServiceProvider> serviceProviderList;
-
-    @OneToMany(mappedBy = "user")
-    private List<Connection> connectionList;
+    private List<ServiceProvider> serviceProviderList = new ArrayList<>();
 
     @OneToOne(mappedBy = "user")
     private Country originalCountry;
 
+    @OneToMany(mappedBy = "user")
+    private List<Connection> connectionList;
+
     public User() {
     }
 
-    public User(int id, String username, String password, String originalIp, String maskedIp, boolean connected, List<ServiceProvider> serviceProviderList, List<Connection> connectionList, Country originalCountry) {
-        this.id = id;
+    public User(String username, String password, Country originalCountry) {
         this.username = username;
         this.password = password;
-        this.originalIp = originalIp;
-        this.maskedIp = maskedIp;
-        this.connected = connected;
-        this.serviceProviderList = serviceProviderList;
-        this.connectionList = connectionList;
         this.originalCountry = originalCountry;
     }
 
@@ -84,11 +78,11 @@ public class User {
         this.maskedIp = maskedIp;
     }
 
-    public boolean getConnected() {
+    public Boolean getConnected() {
         return connected;
     }
 
-    public void setConnected(boolean connected) {
+    public void setConnected(Boolean connected) {
         this.connected = connected;
     }
 
@@ -100,19 +94,19 @@ public class User {
         this.serviceProviderList = serviceProviderList;
     }
 
-    public List<Connection> getConnectionList() {
-        return connectionList;
-    }
-
-    public void setConnectionList(List<Connection> connectionList) {
-        this.connectionList = connectionList;
-    }
-
     public Country getOriginalCountry() {
         return originalCountry;
     }
 
     public void setOriginalCountry(Country originalCountry) {
         this.originalCountry = originalCountry;
+    }
+
+    public List<Connection> getConnectionList() {
+        return connectionList;
+    }
+
+    public void setConnectionList(List<Connection> connectionList) {
+        this.connectionList = connectionList;
     }
 }
