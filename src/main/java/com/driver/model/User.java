@@ -38,6 +38,19 @@ public class User {
 //        this.originalCountry = originalCountry;
 //    }
 
+
+    public User(int id, String username, String password, String originalIp, String maskedIp, Boolean connected, List<ServiceProvider> serviceProviderList, Country originalCountry, List<Connection> connectionList) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.originalIp = originalIp;
+        this.maskedIp = maskedIp;
+        this.connected = connected;
+        this.serviceProviderList = serviceProviderList;
+        this.originalCountry = originalCountry;
+        this.connectionList = connectionList;
+    }
+
     public int getId() {
         return id;
     }
