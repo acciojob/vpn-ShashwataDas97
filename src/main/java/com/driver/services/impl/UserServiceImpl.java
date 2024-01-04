@@ -67,7 +67,7 @@ public class UserServiceImpl implements UserService {
         ServiceProvider serviceProvider = serviceProviderRepository3.findById(serviceProviderId).orElse(null);
         user.getServiceProviderList().add(serviceProvider);
         serviceProvider.getUsers().add(user);
-        userRepository3.save(user);
+        serviceProviderRepository3.save(serviceProvider);
         return user;
     }
 }
