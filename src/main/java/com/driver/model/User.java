@@ -27,7 +27,7 @@ public class User {
     private Country originalCountry;
 
     @OneToMany(mappedBy = "user")
-    private List<Connection> connectionList;
+    private List<Connection> connectionList = new ArrayList<>();
 
     public User() {
     }
