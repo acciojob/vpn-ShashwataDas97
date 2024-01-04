@@ -21,7 +21,7 @@ public class User {
     private boolean connected;
 
     @ManyToMany
-    private List<ServiceProvider> serviceProviderList = new ArrayList<>();
+    private List<ServiceProvider> serviceProviderList;
 
     @OneToMany(mappedBy = "user")
     private List<Connection> connectionList;
